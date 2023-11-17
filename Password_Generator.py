@@ -28,11 +28,18 @@ def cvars_book(digits_in, lowercase_letters_in, uppercase_letters_in, punctuatio
     return chars
 
 def generate_password(cvars_book, lenPW):
-    password = ''
-    for i in range(lenPW):
-        password += random.choice(cvars_book(digits_in, lowercase_letters_in, uppercase_letters_in,
-                                             punctuation_in, bad_cvars_remove))
-    return password
+    return ''.join(
+        random.choice(
+            cvars_book(
+                digits_in,
+                lowercase_letters_in,
+                uppercase_letters_in,
+                punctuation_in,
+                bad_cvars_remove,
+            )
+        )
+        for _ in range(lenPW)
+    )
 
 # Данные
 countPW = int(input('Сколько паролей сгенерировать?'))
